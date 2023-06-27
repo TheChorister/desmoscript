@@ -1,4 +1,0 @@
-import "../../../desmo-lib/3d.desmo" as t;
-import "./view.desmo" as view;
-
-

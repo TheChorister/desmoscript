@@ -19,8 +19,6 @@ Because of Desmoscript's... unorthodox... compile target, you can't just get it 
 2. Install [TamperMonkey](https://www.tampermonkey.net/) or another similar browser extension. This extension easily lets you inject scripts into whatever pages you want. It's like an extension for letting you make your own extensions.
 3. Install [the Desmoscript Loader](https://gist.github.com/radian628/a9e1a39d3487153c532bdc410727c30d/raw/bda88081b28f9102311128dceeb7487a0ccd4596/extension.user.js) userscript. Open or refresh [Desmos](https://desmos.com/calculator). If you see a little box in the bottom right corner that looks like the image below, it's been properly loaded.
 
-![A light gray box with a text input containing the text "http://localhost:3000", followed by a button containing the text "Recompile", followed by a filled checkbox labeled "Auto-recompile."](./docs/desmoscript-loader.png)
-
 4. Type some desmoscript code into a file. This will do as a proof of concept. Make sure the file has the `.desmo` extension:
 
 ```desmo
@@ -28,8 +26,6 @@ y = x ^ 2;
 ```
 
 5. Run the web server by right clicking the file and selecting "Run Desmoscript Web Server." Upon doing this, a new VSCode window should pop up containing some compiler output as well as a URL. If you open the URL in a browser, it should be full of Desmos graph state JSON.
-
-![A vscode window titled "DEsmoscript Server: sample.desmo". On separate lines, it contains the text "Annotate expressions with equivalent desmoscript" (with a text box), "Server is running at http://127.0.0.1:3000", "Close this window to shut down the server.", and "Status: Compilation was successful! (took 14ms)"](./docs/desmoscript-server.png)
 
 6. Paste the URL into the URL box in the Desmos Loader.
 7. Hit "recompile" if it doesn't compile automatically!

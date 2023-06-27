@@ -1,4 +1,4 @@
-run = "npm run watch-all"
+run = "npm run build"
 hidden = [".build", ".config"]
 
 [packager]
@@ -24,4 +24,4 @@ pattern = "**/{*.ts,*.js,*.tsx,*.jsx}"
 start = "typescript-language-server --stdio"
 
 [deployment]
-run = ["sh", "-c", "cd desmoscript && npm run build"]
+run = ["sh", "-c", "npm run build"]

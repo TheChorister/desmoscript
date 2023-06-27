@@ -1,7 +1,0 @@
-"Desmoscript minimal example"
-y = x;
-
-z = match {
-    (x == 1) => 5;
-    3;
-};
