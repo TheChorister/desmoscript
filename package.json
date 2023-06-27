@@ -1,7 +1,17 @@
 {
   "dependencies": {
     "@types/node": "^18.11.9",
-    "immutable": "^4.1.0"
+    "antlr4ts": "^0.5.0-alpha.4",
+    "chokidar": "^3.5.3",
+    "get-port": "^7.0.0",
+    "immutable": "^4.1.0",
+    "path-browserify": "^1.0.1",
+    "vscode": "^1.1.37",
+    "vscode-languageclient": "^8.1.0",
+    "vscode-languageserver": "^8.1.0",
+    "vscode-languageserver-textdocument": "^1.0.8",
+    "vscode-uri": "^3.0.7",
+    "zod": "^3.21.4"
   },
   "scripts": {
     "watch-all": "npm run dev --prefix desmoscript"
