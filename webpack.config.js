@@ -4,14 +4,18 @@ const path = require('path');
 const config = {
     target: 'node',
     entry: './src/index',
+    devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        library: {
+            type: 'commonjs2',
+        },
     },
     module: {
         rules: [
             {
-                test: /\(x)?$/,
+                test: /\.ts(x)?$/,
                 use: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/
             },
@@ -24,8 +28,8 @@ const config = {
     },
     resolve: {
         extensions: [
-            'x',
-            '',
+            '.tsx',
+            '.ts',
             '.js'
         ]
     }
