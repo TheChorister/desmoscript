@@ -1,7 +1,7 @@
 // handle typechecking for elementwise operations
 
-import { BinaryOpNode, Scoped } from "../../ast/ast.ts";
-import { errorType, wrongTypeError } from "./type-errors.ts";
+import { BinaryOpNode, Scoped } from "../../ast/ast";
+import { errorType, wrongTypeError } from "./type-errors";
 import {
   DSPrimitiveType,
   DSType,
@@ -9,7 +9,7 @@ import {
   typecheckExpr,
   typeAsStr,
   ErrorType,
-} from "./typecheck.ts";
+} from "./typecheck";
 
 // where if any argument is a list, the entire output is a list
 function typecheckElementwise(

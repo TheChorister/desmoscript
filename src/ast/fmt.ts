@@ -1,5 +1,5 @@
-import { ASTNode, asExpr } from "./ast.ts";
-import { getBindingPowerStr } from "../parse/parse.ts";
+import { ASTNode, asExpr } from "./ast";
+import { getBindingPowerStr } from "../parse/parse";
 
 export type FmtCtx = {
   indent: number;

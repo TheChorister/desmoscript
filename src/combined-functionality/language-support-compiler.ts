@@ -4,35 +4,35 @@ import {
   IdentifierNode,
   Scope,
   Scoped,
-} from "../ast/ast.ts";
+} from "../ast/ast";
 import {
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.ts";
+} from "../codegen/codegen";
 import {
   CompilerError,
   ResultOk,
   assertNotUndefined,
-} from "../compiler-errors.ts";
-import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index.ts";
-import { resolveFileImports } from "../scope-tree/resolve-imports.ts";
+} from "../compiler-errors";
+import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index";
+import { resolveFileImports } from "../scope-tree/resolve-imports";
 import {
   createASTLookupTableMultipleCompilationUnits,
   handleMacros,
   lexAndParse,
   resolveScopes,
-} from "./full-compiler.ts";
-import { TypeError, formatError } from "../scope-tree/typecheck/type-errors.ts";
+} from "./full-compiler";
+import { TypeError, formatError } from "../scope-tree/typecheck/type-errors";
 
-import { forEachAST } from "../ast/ast.ts";
-import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree.ts";
-import { formatAST } from "../ast/fmt.ts";
-import { compareAST } from "../ast/compare-ast.ts";
-import { Token } from "../parse/lex.ts";
-import { Highlights } from "../parse/parse.ts";
-import { debugPrint } from "../debug/debug.ts";
-import { IOInterface, uint8ArrayToString } from "../io/io.ts";
+import { forEachAST } from "../ast/ast";
+import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree";
+import { formatAST } from "../ast/fmt";
+import { compareAST } from "../ast/compare-ast";
+import { Token } from "../parse/lex";
+import { Highlights } from "../parse/parse";
+import { debugPrint } from "../debug/debug";
+import { IOInterface, uint8ArrayToString } from "../io/io";
 
 export type SyntaxHighlightingType =
   | "function"

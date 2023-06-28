@@ -7,17 +7,17 @@ import {
   NumberNode,
   Scope,
   newid,
-} from "../ast/ast.ts";
-import { mapASTChildren } from "../macro/macro-api.ts";
+} from "../ast/ast";
+import { mapASTChildren } from "../macro/macro-api";
 import {
   ASTScopingContext,
   addToScope,
-} from "../scope-tree/create-scope-tree.ts";
+} from "../scope-tree/create-scope-tree";
 import {
   DSPrimitiveType,
   DSType,
   typeAsStr,
-} from "../scope-tree/typecheck/typecheck.ts";
+} from "../scope-tree/typecheck/typecheck";
 
 const desmosVariables = ["x", "y", "t", "index", "theta"];
 

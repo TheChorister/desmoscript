@@ -1,6 +1,6 @@
-import { CodegenError } from "./codegen/codegen.ts";
-import { debugTrace } from "./debug/debug.ts";
-import { TypeError } from "./scope-tree/typecheck/type-errors.ts";
+import { CodegenError } from "./codegen/codegen";
+import { debugTrace } from "./debug/debug";
+import { TypeError } from "./scope-tree/typecheck/type-errors";
 
 export type CompilerError =
   | {

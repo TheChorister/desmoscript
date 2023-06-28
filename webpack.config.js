@@ -3,7 +3,7 @@ const path = require('path');
 
 const config = {
     target: 'node',
-    entry: './src/index.ts',
+    entry: './src/index',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -11,7 +11,7 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.ts(x)?$/,
+                test: /\(x)?$/,
                 use: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/
             },
@@ -24,8 +24,8 @@ const config = {
     },
     resolve: {
         extensions: [
-            '.tsx',
-            '.ts',
+            'x',
+            '',
             '.js'
         ]
     }

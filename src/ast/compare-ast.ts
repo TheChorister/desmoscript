@@ -1,4 +1,4 @@
-import { ASTNode } from "./ast.ts";
+import { ASTNode } from "./ast";
 
 export type ASTDifference = {
   nodeA: ASTNode;

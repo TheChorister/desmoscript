@@ -5,43 +5,43 @@ import {
   forEachAST,
   forEachASTAsync,
   getErrors,
-} from "../ast/ast.ts";
+} from "../ast/ast";
 import {
   CodegenContext,
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.ts";
-import { GraphState } from "../codegen/graphstate.ts";
+} from "../codegen/codegen";
+import { GraphState } from "../codegen/graphstate";
 import {
   CompilerError,
   Result,
   compilerError,
   err,
   ok,
-} from "../compiler-errors.ts";
-import { lex, streamify } from "../parse/lex.ts";
-import { Highlights, parse } from "../parse/parse.ts";
+} from "../compiler-errors";
+import { lex, streamify } from "../parse/lex";
+import { Highlights, parse } from "../parse/parse";
 import {
   ASTScopingContext,
   addScopesToAST,
   newScope,
-} from "../scope-tree/create-scope-tree.ts";
-import { DesmoCallback, getLinesAndCols } from "../index.ts";
-import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck.ts";
-import { TypeError } from "../scope-tree/typecheck/type-errors.ts";
-import { addStdlibToScope } from "../stdlib/stdlib.ts";
+} from "../scope-tree/create-scope-tree";
+import { DesmoCallback, getLinesAndCols } from "../index";
+import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck";
+import { TypeError } from "../scope-tree/typecheck/type-errors";
+import { addStdlibToScope } from "../stdlib/stdlib";
 
-import { resolveFileImports } from "../scope-tree/resolve-imports.ts";
+import { resolveFileImports } from "../scope-tree/resolve-imports";
 
-import { assertNotUndefined } from "../compiler-errors.ts";
+import { assertNotUndefined } from "../compiler-errors";
 import {
   InstantiateMacroContext,
   instantiateMacros,
   resolveMacros,
-} from "../macro/instantiate-macros.ts";
-import { IOInterface, uint8ArrayToString } from "../io/io.ts";
-import { ImportScriptsMap } from "./language-support-compiler.ts";
+} from "../macro/instantiate-macros";
+import { IOInterface, uint8ArrayToString } from "../io/io";
+import { ImportScriptsMap } from "./language-support-compiler";
 
 export type CompilerOutput =
   | {

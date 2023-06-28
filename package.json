@@ -2,21 +2,9 @@
   "name": "desmoscript",
   "version": "0.1.12",
   "description": "A programming language that compiles to Desmos expressions.",
-  "main": "dist/index.js",
-  "files": [
-    "dist",
-    "dist/grammar"
-  ],
-  "types": "dist/index.d.ts",
-  "devDependencies": {
-    "prettier": "^2.8.3",
-    "typescript": "^4.9.4"
-  },
+  "main": "dist/bundle.js",
   "scripts": {
-    "dev": "npx tsc --watch",
-    "build": "npx tsc",
-    "prepare": "npm run build",
-    "prettier": "npx prettier --write ."
+    "build": "npx webpack-cli",
   },
   "dependencies": {
     "@babel/preset-env": "^7.22.5",

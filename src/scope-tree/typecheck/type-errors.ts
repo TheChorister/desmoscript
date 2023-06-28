@@ -5,12 +5,12 @@ import {
   MacroCallNode,
   ScopeContent,
   Scoped,
-} from "../../ast/ast.ts";
-import { CodegenError } from "../../codegen/codegen.ts";
-import { CompilerError, internalError } from "../../compiler-errors.ts";
-import { debugPrint } from "../../debug/debug.ts";
-import { IOInterface } from "../../io/io.ts";
-import { DSPrimitiveType, ErrorType } from "./typecheck.ts";
+} from "../../ast/ast";
+import { CodegenError } from "../../codegen/codegen";
+import { CompilerError, internalError } from "../../compiler-errors";
+import { debugPrint } from "../../debug/debug";
+import { IOInterface } from "../../io/io";
+import { DSPrimitiveType, ErrorType } from "./typecheck";
 
 export type TypeError =
   | {

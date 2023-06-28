@@ -6,14 +6,14 @@ import {
   Scoped,
   asExpr,
   newid,
-} from "../ast/ast.ts";
-import { formatAST, FmtCtx } from "../ast/fmt.ts";
-import { CompilerError } from "../compiler-errors.ts";
-import { getLinesAndCols } from "../index.ts";
-import { uint8ArrayToString } from "../io/io.ts";
-import { lex } from "../parse/lex.ts";
-import { parse } from "../parse/parse.ts";
-import { InstantiateMacroContext } from "./instantiate-macros.ts";
+} from "../ast/ast";
+import { formatAST, FmtCtx } from "../ast/fmt";
+import { CompilerError } from "../compiler-errors";
+import { getLinesAndCols } from "../index";
+import { uint8ArrayToString } from "../io/io";
+import { lex } from "../parse/lex";
+import { parse } from "../parse/parse";
+import { InstantiateMacroContext } from "./instantiate-macros";
 
 export type MacroError = {
   reason: string | CompilerError[];

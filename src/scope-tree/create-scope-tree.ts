@@ -15,16 +15,16 @@ import {
   Scoped,
   newid,
   asExpr,
-} from "../ast/ast.ts";
+} from "../ast/ast";
 import {
   CompilerError,
   ScopeError,
   compilerError,
   internalError,
-} from "../compiler-errors.ts";
-import { CodegenError } from "../codegen/codegen.ts";
-import { TypeError } from "./typecheck/type-errors.ts";
-import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.ts";
+} from "../compiler-errors";
+import { CodegenError } from "../codegen/codegen";
+import { TypeError } from "./typecheck/type-errors";
+import { ImportScriptsMap } from "../combined-functionality/language-support-compiler";
 
 export function mapASTToAddScopes<T extends ASTNode>(
   node: ChildlessScoped<T>,
