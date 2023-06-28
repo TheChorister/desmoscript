@@ -4,7 +4,7 @@
   "description": "A programming language that compiles to Desmos expressions.",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "npx webpack-cli",
+    "build": "npx webpack-cli"
   },
   "dependencies": {
     "@babel/preset-env": "^7.22.5",
