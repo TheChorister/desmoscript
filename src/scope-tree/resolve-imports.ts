@@ -3,13 +3,13 @@ import {
   ImportScriptNode,
   Scope,
   forEachASTAsync,
-} from "../ast/ast.js";
-import { DesmoCallback, getLinesAndCols } from "../index.js";
-import { CompilerError, Result, compilerError } from "../compiler-errors.js";
-import { Highlights } from "../parse/parse.js";
+} from "../ast/ast.ts";
+import { DesmoCallback, getLinesAndCols } from "../index.ts";
+import { CompilerError, Result, compilerError } from "../compiler-errors.ts";
+import { Highlights } from "../parse/parse.ts";
 
-import { IOInterface } from "../io/io.js";
-import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.js";
+import { IOInterface } from "../io/io.ts";
+import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.ts";
 
 export async function resolveFileImports(
   filename: string,

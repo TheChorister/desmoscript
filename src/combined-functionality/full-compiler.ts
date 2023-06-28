@@ -5,43 +5,43 @@ import {
   forEachAST,
   forEachASTAsync,
   getErrors,
-} from "../ast/ast.js";
+} from "../ast/ast.ts";
 import {
   CodegenContext,
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.js";
-import { GraphState } from "../codegen/graphstate.js";
+} from "../codegen/codegen.ts";
+import { GraphState } from "../codegen/graphstate.ts";
 import {
   CompilerError,
   Result,
   compilerError,
   err,
   ok,
-} from "../compiler-errors.js";
-import { lex, streamify } from "../parse/lex.js";
-import { Highlights, parse } from "../parse/parse.js";
+} from "../compiler-errors.ts";
+import { lex, streamify } from "../parse/lex.ts";
+import { Highlights, parse } from "../parse/parse.ts";
 import {
   ASTScopingContext,
   addScopesToAST,
   newScope,
-} from "../scope-tree/create-scope-tree.js";
-import { DesmoCallback, getLinesAndCols } from "../index.js";
-import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck.js";
-import { TypeError } from "../scope-tree/typecheck/type-errors.js";
-import { addStdlibToScope } from "../stdlib/stdlib.js";
+} from "../scope-tree/create-scope-tree.ts";
+import { DesmoCallback, getLinesAndCols } from "../index.ts";
+import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck.ts";
+import { TypeError } from "../scope-tree/typecheck/type-errors.ts";
+import { addStdlibToScope } from "../stdlib/stdlib.ts";
 
-import { resolveFileImports } from "../scope-tree/resolve-imports.js";
+import { resolveFileImports } from "../scope-tree/resolve-imports.ts";
 
-import { assertNotUndefined } from "../compiler-errors.js";
+import { assertNotUndefined } from "../compiler-errors.ts";
 import {
   InstantiateMacroContext,
   instantiateMacros,
   resolveMacros,
-} from "../macro/instantiate-macros.js";
-import { IOInterface, uint8ArrayToString } from "../io/io.js";
-import { ImportScriptsMap } from "./language-support-compiler.js";
+} from "../macro/instantiate-macros.ts";
+import { IOInterface, uint8ArrayToString } from "../io/io.ts";
+import { ImportScriptsMap } from "./language-support-compiler.ts";
 
 export type CompilerOutput =
   | {

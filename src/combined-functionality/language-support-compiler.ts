@@ -4,35 +4,35 @@ import {
   IdentifierNode,
   Scope,
   Scoped,
-} from "../ast/ast.js";
+} from "../ast/ast.ts";
 import {
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.js";
+} from "../codegen/codegen.ts";
 import {
   CompilerError,
   ResultOk,
   assertNotUndefined,
-} from "../compiler-errors.js";
-import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index.js";
-import { resolveFileImports } from "../scope-tree/resolve-imports.js";
+} from "../compiler-errors.ts";
+import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index.ts";
+import { resolveFileImports } from "../scope-tree/resolve-imports.ts";
 import {
   createASTLookupTableMultipleCompilationUnits,
   handleMacros,
   lexAndParse,
   resolveScopes,
-} from "./full-compiler.js";
-import { TypeError, formatError } from "../scope-tree/typecheck/type-errors.js";
+} from "./full-compiler.ts";
+import { TypeError, formatError } from "../scope-tree/typecheck/type-errors.ts";
 
-import { forEachAST } from "../ast/ast.js";
-import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree.js";
-import { formatAST } from "../ast/fmt.js";
-import { compareAST } from "../ast/compare-ast.js";
-import { Token } from "../parse/lex.js";
-import { Highlights } from "../parse/parse.js";
-import { debugPrint } from "../debug/debug.js";
-import { IOInterface, uint8ArrayToString } from "../io/io.js";
+import { forEachAST } from "../ast/ast.ts";
+import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree.ts";
+import { formatAST } from "../ast/fmt.ts";
+import { compareAST } from "../ast/compare-ast.ts";
+import { Token } from "../parse/lex.ts";
+import { Highlights } from "../parse/parse.ts";
+import { debugPrint } from "../debug/debug.ts";
+import { IOInterface, uint8ArrayToString } from "../io/io.ts";
 
 export type SyntaxHighlightingType =
   | "function"

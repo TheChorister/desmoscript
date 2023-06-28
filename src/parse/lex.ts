@@ -4,7 +4,7 @@ import {
   compilerError,
   err,
   ok,
-} from "../compiler-errors.js";
+} from "../compiler-errors.ts";
 
 export type Token = {
   start: number;

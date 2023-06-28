@@ -7,23 +7,23 @@ import {
   forEachAST,
   forEachASTAsync,
   newid,
-} from "../ast/ast.js";
-import { createASTLookupTable } from "../combined-functionality/full-compiler.js";
-import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.js";
-import { CompilerError } from "../compiler-errors.js";
-import { debugPrint } from "../debug/debug.js";
-import { IOInterface } from "../io/io.js";
+} from "../ast/ast.ts";
+import { createASTLookupTable } from "../combined-functionality/full-compiler.ts";
+import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.ts";
+import { CompilerError } from "../compiler-errors.ts";
+import { debugPrint } from "../debug/debug.ts";
+import { IOInterface } from "../io/io.ts";
 import {
   ASTScopingContext,
   addScopesToAST,
   findIdentifierScopeItem,
-} from "../scope-tree/create-scope-tree.js";
+} from "../scope-tree/create-scope-tree.ts";
 import {
   notFoundError,
   TypeError,
-} from "../scope-tree/typecheck/type-errors.js";
+} from "../scope-tree/typecheck/type-errors.ts";
 
-import { MacroError, getMacroAPI } from "./macro-api.js";
+import { MacroError, getMacroAPI } from "./macro-api.ts";
 
 export type InstantiateMacroContext = {
   unit: string;

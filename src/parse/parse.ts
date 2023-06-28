@@ -27,17 +27,17 @@ import {
   SettingsNode,
   MacroCallNode,
   ImportScriptNode,
-} from "../ast/ast.js";
-import { SyntaxHighlightingType } from "../combined-functionality/language-support-compiler.js";
+} from "../ast/ast.ts";
+import { SyntaxHighlightingType } from "../combined-functionality/language-support-compiler.ts";
 import {
   CompilerError,
   Result,
   compilerError,
   err,
   ok,
-} from "../compiler-errors.js";
-import { debugPrint } from "../debug/debug.js";
-import { Token, token } from "./lex.js";
+} from "../compiler-errors.ts";
+import { debugPrint } from "../debug/debug.ts";
+import { Token, token } from "./lex.ts";
 
 export interface TokenStream {
   next: (considerWhitespace?: boolean) => Token | undefined;

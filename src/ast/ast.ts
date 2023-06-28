@@ -1,7 +1,7 @@
-import { Result, err, ok } from "../compiler-errors.js";
-import { MacroAPI } from "../macro/macro-api.js";
-import { DSType } from "../scope-tree/typecheck/typecheck.js";
-import { BuiltinTypeSignature } from "../stdlib/stdlib.js";
+import { Result, err, ok } from "../compiler-errors.ts";
+import { MacroAPI } from "../macro/macro-api.ts";
+import { DSType } from "../scope-tree/typecheck/typecheck.ts";
+import { BuiltinTypeSignature } from "../stdlib/stdlib.ts";
 
 export type CompilationUnit = {
   scopeTree: Scope;

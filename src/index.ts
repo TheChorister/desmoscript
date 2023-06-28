@@ -1,4 +1,4 @@
-import { CompilationUnit, Scope } from "./ast/ast.js";
+import { CompilationUnit, Scope } from "./ast/ast.ts";
 
 export let placeholder = 0;
 
@@ -60,14 +60,14 @@ export function getLinesAndCols(str: string): [number, number][] {
 //   console.log("Failure!");
 // }
 
-export { lex } from "./parse/lex.js";
-export { parse } from "./parse/parse.js";
-export { typecheckScopeTree } from "./scope-tree/typecheck/typecheck.js";
-export { compileDesmoscript } from "./combined-functionality/full-compiler.js";
-export { compileDesmoscriptForLanguageSupport } from "./combined-functionality/language-support-compiler.js";
-export { enableDebug } from "./debug/debug.js";
-export { formatError } from "./scope-tree/typecheck/type-errors.js";
-export { IOInterface } from "./io/io.js";
+export { lex } from "./parse/lex.ts";
+export { parse } from "./parse/parse.ts";
+export { typecheckScopeTree } from "./scope-tree/typecheck/typecheck.ts";
+export { compileDesmoscript } from "./combined-functionality/full-compiler.ts";
+export { compileDesmoscriptForLanguageSupport } from "./combined-functionality/language-support-compiler.ts";
+export { enableDebug } from "./debug/debug.ts";
+export { formatError } from "./scope-tree/typecheck/type-errors.ts";
+export { IOInterface } from "./io/io.ts";
 
 export type DesmoCallback = (ctx: { scope: Scope }) => void;
 export declare function desmo(callback: DesmoCallback): void;

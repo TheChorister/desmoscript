@@ -2,10 +2,10 @@ import {
   Scoped,
   FunctionCallNode,
   ScopeContentBuiltinFunction,
-} from "../../ast/ast.js";
-import { printTypeSig } from "../../stdlib/stdlib.js";
-import { indent, wrongTypeError } from "./type-errors.js";
-import { DSType, TypecheckContext } from "./typecheck.js";
+} from "../../ast/ast.ts";
+import { printTypeSig } from "../../stdlib/stdlib.ts";
+import { indent, wrongTypeError } from "./type-errors.ts";
+import { DSType, TypecheckContext } from "./typecheck.ts";
 
 export function isCompatible(src: DSType, dst: DSType[]) {
   for (const type of dst) {
