@@ -245,7 +245,7 @@ export function formatError(
 
   debugPrint(err, err.start);
 
-  const [line, col] = unit.linesAndCols[err.start ?? 0];
+  const [line, col] = unit.linesAndCols[err.start ?? 0] || [0, 0];
 
   const baseErr =
     wrap(
@@ -281,8 +281,8 @@ export function formatError(
       [...err.path, err.path[0]]
         .map(({ start, end, unit }) => {
           const unitData = ctx.sourceCode.get(unit) as CompilationUnit;
-          const [line, col] = unitData.linesAndCols[start];
-          const str = unitData.src.slice(start, end);
+          const [line, col] = unitData.linesAndCols[start] || [0, 0];
+          const str = unitData.src.slice(start, end) || "";
           return str;
         })
         .join(" -> ") +
@@ -291,7 +291,7 @@ export function formatError(
         err.path
           .map(({ start, end, unit }) => {
             const unitData = ctx.sourceCode.get(unit) as CompilationUnit;
-            const [line, col] = unitData.linesAndCols[start];
+            const [line, col] = unitData.linesAndCols[start] || [0, 0];
             return `${ctx.format(`At ${unit}:${line}:${col}`, {
               type: "deemphasize",
             })}${indent(

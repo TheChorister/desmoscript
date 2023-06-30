@@ -1,18 +1,15 @@
-const { compileDesmoscript, formatError, getLinesAndCols } = require("./dist/bundle.js");
-const fs = require("fs");
+const { compileDesmoscript, formatError } = require("./dist/bundle.js");
+const fs = require("fs/promises");
 const path = require("path");
 
-compileDesmoscript("./sample.desmo", {
+compileDesmoscript("/home/runner/desmoscript/sample.desmo", {
     unsavedFiles: new Map(),
     io: {
         watchFile: () => (() => {}),
         writeFile: (str, data) => fs.writeFile(str, data),
         readFile: async (str) => {
-            console.log(str)
             const fileBuffer = await fs.readFile(str);
-            const arr = new Uint8Array(fileBuffer.buffer.slice(0,                fileBuffer.length));
-            console.log("READ FILE: ", arr);
-            return arr;
+            return fileBuffer.toString();
         },
         resolvePath: path.resolve,
         dirname: path.dirname,
@@ -21,10 +18,8 @@ compileDesmoscript("./sample.desmo", {
     watchFiles: new Set(),
     options: { },
 }).then(compileOutput => {
-
-    console.log(compileOutput.sourceCode)
-                    
-    console.log(
+                 
+    /*console.log(
         compileOutput.errors
             .map((e) => {
                 return formatError(
@@ -55,7 +50,7 @@ compileDesmoscript("./sample.desmo", {
                 );
             })
             .join(`\n\x1b[38;5;195m${"".padStart(80, "_")}\x1b[0m\n\n`)
-    );
+    );*/
     
     if (compileOutput.type == "success") {
         console.log("Success!");

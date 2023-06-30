@@ -285,10 +285,7 @@ export async function compileDesmoscript(
         const unsavedFile = settings.unsavedFiles.get(filepath) as string;
         return unsavedFile;
       }
-      const unsavedFile = uint8ArrayToString(
-        await settings.io.readFile(filepath)
-      );
-      console.log("GOT FILE", filepath, unsavedFile);
+      const unsavedFile = await settings.io.readFile(filepath);
       return unsavedFile;
     },
     io: settings.io,

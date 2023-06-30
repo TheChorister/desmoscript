@@ -10,7 +10,6 @@ import {
 import { formatAST, FmtCtx } from "../ast/fmt";
 import { CompilerError } from "../compiler-errors";
 import { getLinesAndCols } from "../index";
-import { uint8ArrayToString } from "../io/io";
 import { lex } from "../parse/lex";
 import { parse } from "../parse/parse";
 import { InstantiateMacroContext } from "./instantiate-macros";
@@ -87,7 +86,7 @@ export type MacroAPI = {
   // format AST nodes as a string
   fmt: (node: ASTNode) => string;
 
-  readFile: (filepath: string) => Promise<Uint8Array>;
+  readFile: (filepath: string) => Promise<string>;
   readStringFile: (filepath: string) => Promise<string>;
 
   node: <T extends ASTNode>(node: Omit<T, "start" | "end" | "id">) => T;
@@ -177,7 +176,7 @@ export function getMacroAPI(
     readStringFile: async (filepath: string) => {
       const abspath = getAbsolutePathRelativeToThisFile(filepath);
       ctx.watchFiles.add(abspath);
-      return uint8ArrayToString(await ctx.io.readFile(abspath));
+      return await ctx.io.readFile(abspath);
     },
   };
 }

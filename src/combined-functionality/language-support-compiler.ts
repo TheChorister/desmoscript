@@ -179,7 +179,7 @@ export function compileDesmoscriptForLanguageSupport(
       getFile: async (filepath) => {
         if (unsavedFiles.has(filepath))
           return unsavedFiles.get(filepath) as string;
-        return uint8ArrayToString(await io.readFile(filepath));
+        return await io.readFile(filepath);
       },
       highlightsMap,
       io,

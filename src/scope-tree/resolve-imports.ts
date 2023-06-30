@@ -41,12 +41,14 @@ export async function resolveFileImports(
 ) {
   // get absolute path to file
   const fullpath = ctx.io.resolvePath(ctx.io.dirname(importer), filename);
+
   if (ctx.imports.has(fullpath)) return;
 
   try {
     // read file and store source code in case there are parse errors
     // that result in an import being unavailable
     const src = await ctx.getFile(fullpath);
+      console.log("src", src, "fullpath", fullpath);
     ctx.watchFiles.add(fullpath);
     ctx.sourceCode.set(fullpath, { src, linesAndCols: getLinesAndCols(src) });
 
