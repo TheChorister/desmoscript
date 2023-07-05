@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx webpack-cli --progress",
     "test": "node ./test.js",
+    "watch": "npx webpack-cli watch --progress",
     "dev": "npm run build && npm run test"
   },
   "dependencies": {

@@ -48,7 +48,6 @@ export async function resolveFileImports(
     // read file and store source code in case there are parse errors
     // that result in an import being unavailable
     const src = await ctx.getFile(fullpath);
-      console.log("src", src, "fullpath", fullpath);
     ctx.watchFiles.add(fullpath);
     ctx.sourceCode.set(fullpath, { src, linesAndCols: getLinesAndCols(src) });
 
@@ -76,7 +75,7 @@ export async function resolveFileImports(
           );
           const iscriptSrc = await ctx.getFile(iscriptFullPath);
           ctx.watchFiles.add(iscriptSrc);
-          console.log("import script source", iscriptSrc);
+          //console.log("import script source", iscriptSrc);
           try {
             const importScript = new Function("desmo", iscriptSrc);
             importScript((run: () => { scope: Scope }) => {
