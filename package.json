@@ -8,7 +8,7 @@
     "test": "node ./test.js",
     "watch": "npx webpack-cli watch --progress",
     "dev": "npm run build && npm run test",
-    "postinstall": "npx webpack-cli --progress --mode production"
+    "postinstall": "if [ ! -e ./dist/bundle.js ]; then npx webpack-cli --progress --mode production; fi;"
   },
   "dependencies": {
     "@babel/preset-env": "^7.22.5",
