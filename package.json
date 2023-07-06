@@ -4,10 +4,11 @@
   "description": "A programming language that compiles to Desmos expressions.",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "npx webpack-cli --progress",
+    "build": "npx webpack-cli --progress --mode development",
     "test": "node ./test.js",
     "watch": "npx webpack-cli watch --progress",
-    "dev": "npm run build && npm run test"
+    "dev": "npm run build && npm run test",
+    "postinstall": "npx webpack-cli --progress --mode production"
   },
   "dependencies": {
     "@babel/preset-env": "^7.22.5",
