@@ -27,18 +27,23 @@ import {
   SettingsNode,
   MacroCallNode,
   ImportScriptNode,
+<<<<<<< HEAD
   ActionsNode,
 } from "../ast/ast.js";
 import { SyntaxHighlightingType } from "../combined-functionality/language-support-compiler.js";
+=======
+} from "../ast/ast";
+import { SyntaxHighlightingType } from "../combined-functionality/language-support-compiler";
+>>>>>>> desmoscript
 import {
   CompilerError,
   Result,
   compilerError,
   err,
   ok,
-} from "../compiler-errors.js";
-import { debugPrint } from "../debug/debug.js";
-import { Token, token } from "./lex.js";
+} from "../compiler-errors";
+import { debugPrint } from "../debug/debug";
+import { Token, token } from "./lex";
 
 export interface TokenStream {
   next: (considerWhitespace?: boolean) => Token | undefined;

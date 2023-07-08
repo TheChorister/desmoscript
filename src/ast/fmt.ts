@@ -1,5 +1,5 @@
-import { ASTNode, asExpr } from "./ast.js";
-import { getBindingPowerStr } from "../parse/parse.js";
+import { ASTNode, asExpr } from "./ast";
+import { getBindingPowerStr } from "../parse/parse";
 
 export type FmtCtx = {
   indent: number;

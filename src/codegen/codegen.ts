@@ -9,16 +9,16 @@ import {
   Scoped,
   asExpr,
   newid,
-} from "../ast/ast.js";
-import { formatAST } from "../ast/fmt.js";
-import { assertNotUndefined, internalError } from "../compiler-errors.js";
-import { debugPrint, debugTrace } from "../debug/debug.js";
+} from "../ast/ast";
+import { formatAST } from "../ast/fmt";
+import { assertNotUndefined, internalError } from "../compiler-errors";
+import { debugPrint, debugTrace } from "../debug/debug";
 import {
   findIdentifierScopeItem,
   getScopeNameList,
-} from "../scope-tree/create-scope-tree.js";
-import { wrongTypeError } from "../scope-tree/typecheck/type-errors.js";
-import { getASTExpr, getASTNode } from "../scope-tree/typecheck/typecheck.js";
+} from "../scope-tree/create-scope-tree";
+import { wrongTypeError } from "../scope-tree/typecheck/type-errors";
+import { getASTExpr, getASTNode } from "../scope-tree/typecheck/typecheck";
 import {
   GraphState,
   GrapherStateParser,
@@ -28,7 +28,7 @@ import {
   nonFolderStateParser,
   expressionStateParser,
   ExpressionState,
-} from "./graphstate.js";
+} from "./graphstate";
 //import { fromZodError } from "zod-validation-error";
 
 export type CodegenError = {

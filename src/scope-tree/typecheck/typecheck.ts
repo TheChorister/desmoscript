@@ -5,7 +5,7 @@ import {
   Scope,
   UnaryOpNode,
   getErrors,
-} from "../../ast/ast.js";
+} from "../../ast/ast";
 import {
   ASTExpr,
   ASTNode,
@@ -24,10 +24,10 @@ import {
   ScopeContentVariable,
   Scoped,
   asExpr,
-} from "../../ast/ast.js";
-import { formatAST } from "../../ast/fmt.js";
-import { assertNotUndefined, internalError } from "../../compiler-errors.js";
-import { findIdentifierScopeItem } from "../create-scope-tree.js";
+} from "../../ast/ast";
+import { formatAST } from "../../ast/fmt";
+import { assertNotUndefined, internalError } from "../../compiler-errors";
+import { findIdentifierScopeItem } from "../create-scope-tree";
 import {
   formatCircularDependencyError,
   notFoundError,
@@ -36,10 +36,10 @@ import {
   assertNoError,
   formatScopeItemTypeName,
   badMacroError,
-} from "./type-errors.js";
-import { consolidateTypeErrors } from "./typecheck-binop.js";
-import { typecheckBinop } from "./typecheck-binop.js";
-import { typecheckBuiltinFn } from "./typecheck-builtin-fn.js";
+} from "./type-errors";
+import { consolidateTypeErrors } from "./typecheck-binop";
+import { typecheckBinop } from "./typecheck-binop";
+import { typecheckBuiltinFn } from "./typecheck-builtin-fn";
 
 export type DSPrimitiveType =
   | {

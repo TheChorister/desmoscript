@@ -3,13 +3,13 @@ import {
   ImportScriptNode,
   Scope,
   forEachASTAsync,
-} from "../ast/ast.js";
-import { DesmoCallback, getLinesAndCols } from "../index.js";
-import { CompilerError, Result, compilerError } from "../compiler-errors.js";
-import { Highlights } from "../parse/parse.js";
+} from "../ast/ast";
+import { DesmoCallback, getLinesAndCols } from "../index";
+import { CompilerError, Result, compilerError } from "../compiler-errors";
+import { Highlights } from "../parse/parse";
 
-import { IOInterface } from "../io/io.js";
-import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.js";
+import { IOInterface } from "../io/io";
+import { ImportScriptsMap } from "../combined-functionality/language-support-compiler";
 
 export async function resolveFileImports(
   filename: string,
@@ -41,6 +41,7 @@ export async function resolveFileImports(
 ) {
   // get absolute path to file
   const fullpath = ctx.io.resolvePath(ctx.io.dirname(importer), filename);
+
   if (ctx.imports.has(fullpath)) return;
 
   try {
@@ -74,7 +75,7 @@ export async function resolveFileImports(
           );
           const iscriptSrc = await ctx.getFile(iscriptFullPath);
           ctx.watchFiles.add(iscriptSrc);
-          console.log("import script source", iscriptSrc);
+          //console.log("import script source", iscriptSrc);
           try {
             const importScript = new Function("desmo", iscriptSrc);
             importScript((run: () => { scope: Scope }) => {

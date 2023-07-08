@@ -1,7 +1,7 @@
 // handle typechecking for elementwise operations
 
-import { BinaryOpNode, Scoped } from "../../ast/ast.js";
-import { errorType, wrongTypeError } from "./type-errors.js";
+import { BinaryOpNode, Scoped } from "../../ast/ast";
+import { errorType, wrongTypeError } from "./type-errors";
 import {
   DSPrimitiveType,
   DSType,
@@ -9,7 +9,7 @@ import {
   typecheckExpr,
   typeAsStr,
   ErrorType,
-} from "./typecheck.js";
+} from "./typecheck";
 
 // where if any argument is a list, the entire output is a list
 function typecheckElementwise(
@@ -96,7 +96,6 @@ export function typecheckListSubscript(
 }
 
 export function consolidateTypeErrors(input: DSType[]): ErrorType | undefined {
-  console.log("consolidate typeerror input", input);
   const errors: ErrorType[] = input.filter(
     (e) => e.type == "error"
   ) as ErrorType[];

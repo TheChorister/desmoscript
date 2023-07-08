@@ -4,35 +4,35 @@ import {
   IdentifierNode,
   Scope,
   Scoped,
-} from "../ast/ast.js";
+} from "../ast/ast";
 import {
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.js";
+} from "../codegen/codegen";
 import {
   CompilerError,
   ResultOk,
   assertNotUndefined,
-} from "../compiler-errors.js";
-import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index.js";
-import { resolveFileImports } from "../scope-tree/resolve-imports.js";
+} from "../compiler-errors";
+import { DesmoCallback, lex, parse, typecheckScopeTree } from "../index";
+import { resolveFileImports } from "../scope-tree/resolve-imports";
 import {
   createASTLookupTableMultipleCompilationUnits,
   handleMacros,
   lexAndParse,
   resolveScopes,
-} from "./full-compiler.js";
-import { TypeError, formatError } from "../scope-tree/typecheck/type-errors.js";
+} from "./full-compiler";
+import { TypeError, formatError } from "../scope-tree/typecheck/type-errors";
 
-import { forEachAST } from "../ast/ast.js";
-import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree.js";
-import { formatAST } from "../ast/fmt.js";
-import { compareAST } from "../ast/compare-ast.js";
-import { Token } from "../parse/lex.js";
-import { Highlights } from "../parse/parse.js";
-import { debugPrint } from "../debug/debug.js";
-import { IOInterface, uint8ArrayToString } from "../io/io.js";
+import { forEachAST } from "../ast/ast";
+import { findIdentifierScopeItem } from "../scope-tree/create-scope-tree";
+import { formatAST } from "../ast/fmt";
+import { compareAST } from "../ast/compare-ast";
+import { Token } from "../parse/lex";
+import { Highlights } from "../parse/parse";
+import { debugPrint } from "../debug/debug";
+import { IOInterface, uint8ArrayToString } from "../io/io";
 
 export type SyntaxHighlightingType =
   | "function"
@@ -143,6 +143,9 @@ export function compileDesmoscriptForLanguageSupport(
 
   let activeWatchers: (() => void)[] = [];
 
+    
+  const getAbsolutePath = (cwdfile: string, path: string) => io.resolvePath(io.dirname(cwdfile), path);
+
   async function recompile(entryPoint: string): Promise<RecompileResult> {
     if (cachedRecompilation) return cachedRecompilation;
 
@@ -179,7 +182,7 @@ export function compileDesmoscriptForLanguageSupport(
       getFile: async (filepath) => {
         if (unsavedFiles.has(filepath))
           return unsavedFiles.get(filepath) as string;
-        return uint8ArrayToString(await io.readFile(filepath));
+        return await io.readFile(filepath);
       },
       highlightsMap,
       io,
@@ -199,8 +202,6 @@ export function compileDesmoscriptForLanguageSupport(
       importScripts
     );
 
-    const getAbsolutePath = (cwdfile: string, path: string) =>
-      io.resolvePath(io.dirname(cwdfile), path);
 
     await handleMacros(
       compilationUnits,
@@ -240,12 +241,12 @@ export function compileDesmoscriptForLanguageSupport(
       )}) (sourcecode: ${JSON.stringify(Array.from(sourceCode.keys()))})`
     );
 
-    console.log(
+    /*console.log(
       "COMPILATIONUNITS",
       compilationUnits,
       Array.from(compilationUnits.keys()),
       Array.from(sourceCode.keys())
-    );
+    );*/
 
     errors.push(
       ...(typecheckScopeTree(entryCompilationUnit.scopeTree, {
@@ -265,7 +266,12 @@ export function compileDesmoscriptForLanguageSupport(
       highlightsMap,
     };
 
-    return cachedRecompilation;
+    return cachedRecompilation/*{
+        errors: [],
+        compilationUnits: new Map(),
+        sourceCode: new Map(),
+        highlightsMap: new Map(),
+    }*/;
   }
 
   let cachedRecompilation: RecompileResult | undefined;
@@ -273,11 +279,13 @@ export function compileDesmoscriptForLanguageSupport(
   return {
     updateFile(filename, src) {
       cachedRecompilation = undefined;
-      unsavedFiles.set(filename, src);
+      unsavedFiles.set(io.resolvePath(filename), src);
     },
 
     async highlightSyntax(filename, handler2) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
+        console.log(ctx);
       const code = ctx.sourceCode.get(filename);
       if (!code) return;
 
@@ -347,6 +355,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async getDefinitions(filename, handler) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);
@@ -383,6 +392,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async goToDefinition(filename, position) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);
@@ -423,6 +433,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async getErrors(filename, handler) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
 
       for (const err of ctx.errors) {
@@ -457,6 +468,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async formatFile(filename) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);
@@ -481,6 +493,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async getColors(filename, handler) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);
@@ -506,6 +519,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async getAutocomplete(filename, position, handler) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);
@@ -569,6 +583,7 @@ export function compileDesmoscriptForLanguageSupport(
     },
 
     async onHover(filename, position) {
+      filename = io.resolvePath(filename);
       const ctx = await recompile(filename);
       if (!ctx.compilationUnits) return;
       const unit = ctx.compilationUnits.get(filename);

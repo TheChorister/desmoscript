@@ -1,5 +1,6 @@
 {
   "name": "desmoscript",
+<<<<<<< HEAD
   "type": "module",
   "version": "0.1.12",
   "description": "A programming language that compiles to Desmos expressions.",
@@ -22,6 +23,26 @@
   },
   "dependencies": {
     "chokidar": "^3.5.3",
+=======
+  "version": "0.1.12",
+  "description": "A programming language that compiles to Desmos expressions.",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "npx webpack-cli --progress --mode development",
+    "test": "node ./test.js",
+    "watch": "npx webpack-cli watch --progress",
+    "dev": "npm run build && npm run test",
+    "postinstall": "if [ ! -e ./dist/bundle.js ]; then npx webpack-cli --progress --mode production; fi;"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "antlr4ts": "^0.5.0-alpha.4",
+    "babel-loader": "^9.1.2",
+    "chokidar": "^3.5.3",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4",
+>>>>>>> desmoscript
     "zod": "3.20.2",
     "zod-validation-error": "^0.3.2"
   }

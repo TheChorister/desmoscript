@@ -7,17 +7,17 @@ import {
   NumberNode,
   Scope,
   newid,
-} from "../ast/ast.js";
-import { mapASTChildren } from "../macro/macro-api.js";
+} from "../ast/ast";
+import { mapASTChildren } from "../macro/macro-api";
 import {
   ASTScopingContext,
   addToScope,
-} from "../scope-tree/create-scope-tree.js";
+} from "../scope-tree/create-scope-tree";
 import {
   DSPrimitiveType,
   DSType,
   typeAsStr,
-} from "../scope-tree/typecheck/typecheck.js";
+} from "../scope-tree/typecheck/typecheck";
 
 const desmosVariables = ["x", "y", "t", "index", "theta"];
 
@@ -588,7 +588,6 @@ export function addStdlibToScope(scope: Scope, ctx: ASTScopingContext) {
               }
 
               const out = process(params[params.length - 1]);
-              console.log("macro output", out);
 
               return out;
             },

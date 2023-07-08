@@ -5,43 +5,43 @@ import {
   forEachAST,
   forEachASTAsync,
   getErrors,
-} from "../ast/ast.js";
+} from "../ast/ast";
 import {
   CodegenContext,
   CodegenError,
   defaultGraphstate,
   generateCode,
-} from "../codegen/codegen.js";
-import { GraphState } from "../codegen/graphstate.js";
+} from "../codegen/codegen";
+import { GraphState } from "../codegen/graphstate";
 import {
   CompilerError,
   Result,
   compilerError,
   err,
   ok,
-} from "../compiler-errors.js";
-import { lex, streamify } from "../parse/lex.js";
-import { Highlights, parse } from "../parse/parse.js";
+} from "../compiler-errors";
+import { lex, streamify } from "../parse/lex";
+import { Highlights, parse } from "../parse/parse";
 import {
   ASTScopingContext,
   addScopesToAST,
   newScope,
-} from "../scope-tree/create-scope-tree.js";
-import { DesmoCallback, getLinesAndCols } from "../index.js";
-import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck.js";
-import { TypeError } from "../scope-tree/typecheck/type-errors.js";
-import { addStdlibToScope } from "../stdlib/stdlib.js";
+} from "../scope-tree/create-scope-tree";
+import { DesmoCallback, getLinesAndCols } from "../index";
+import { typecheckScopeTree } from "../scope-tree/typecheck/typecheck";
+import { TypeError } from "../scope-tree/typecheck/type-errors";
+import { addStdlibToScope } from "../stdlib/stdlib";
 
-import { resolveFileImports } from "../scope-tree/resolve-imports.js";
+import { resolveFileImports } from "../scope-tree/resolve-imports";
 
-import { assertNotUndefined } from "../compiler-errors.js";
+import { assertNotUndefined } from "../compiler-errors";
 import {
   InstantiateMacroContext,
   instantiateMacros,
   resolveMacros,
-} from "../macro/instantiate-macros.js";
-import { IOInterface, uint8ArrayToString } from "../io/io.js";
-import { ImportScriptsMap } from "./language-support-compiler.js";
+} from "../macro/instantiate-macros";
+import { IOInterface, uint8ArrayToString } from "../io/io";
+import { ImportScriptsMap } from "./language-support-compiler";
 
 export type CompilerOutput =
   | {
@@ -285,10 +285,7 @@ export async function compileDesmoscript(
         const unsavedFile = settings.unsavedFiles.get(filepath) as string;
         return unsavedFile;
       }
-      const unsavedFile = uint8ArrayToString(
-        await settings.io.readFile(filepath)
-      );
-      console.log("GOT FILE", filepath, unsavedFile);
+      const unsavedFile = await settings.io.readFile(filepath);
       return unsavedFile;
     },
     io: settings.io,

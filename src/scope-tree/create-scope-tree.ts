@@ -15,16 +15,16 @@ import {
   Scoped,
   newid,
   asExpr,
-} from "../ast/ast.js";
+} from "../ast/ast";
 import {
   CompilerError,
   ScopeError,
   compilerError,
   internalError,
-} from "../compiler-errors.js";
-import { CodegenError } from "../codegen/codegen.js";
-import { TypeError } from "./typecheck/type-errors.js";
-import { ImportScriptsMap } from "../combined-functionality/language-support-compiler.js";
+} from "../compiler-errors";
+import { CodegenError } from "../codegen/codegen";
+import { TypeError } from "./typecheck/type-errors";
+import { ImportScriptsMap } from "../combined-functionality/language-support-compiler";
 
 export function mapASTToAddScopes<T extends ASTNode>(
   node: ChildlessScoped<T>,
@@ -395,7 +395,6 @@ export function addScopesToAST(
       }
 
       iscript?.run({ scope: state.scope });
-      console.log("RUNNING ISCRIPT");
       break;
     case "settings":
       addToScope(
